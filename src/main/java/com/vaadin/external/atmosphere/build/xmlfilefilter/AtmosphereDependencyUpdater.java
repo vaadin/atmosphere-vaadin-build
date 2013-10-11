@@ -28,13 +28,6 @@ public class AtmosphereDependencyUpdater extends PomXmlFilter {
 			groupId.setTextContent(GROUP_ID_PREFIX);
 		}
 
-		// Internal dependencies
-		Element compatVersion = (Element) findNode(doc,
-				"/project/properties/compat-version");
-		if (compatVersion != null) {
-			compatVersion.setTextContent(Version.getVersion());
-		}
-
 		updateFile(f, doc);
 	}
 
