@@ -35,9 +35,14 @@ public class ProjectGroupIdFilter extends PomXmlFilter {
 			e.setTextContent(GROUP_ID_PREFIX);
 		} else if ("org.atmosphere.client".equals(groupId)) {
 			e.setTextContent(GROUP_ID_PREFIX + ".client");
+		} else if ("org.atmosphere.org.timepedia.exporter".equals(groupId)) {
+			e.setTextContent(GROUP_ID_PREFIX + ".org.timepedia.exporter");
 		} else if (GROUP_ID_PREFIX.equals(groupId)
 				|| (GROUP_ID_PREFIX + ".client").equals(groupId)) {
 		} else if ("org.sonatype.oss".equals(groupId)) {
+		} else if ("gwtexporter".equals(groupId)) {
+			e.setTextContent(GROUP_ID_PREFIX + ".gwtexporter");
+
 		} else {
 			throw new IllegalStateException("Unexpected groupId: " + groupId);
 		}
