@@ -1,4 +1,5 @@
 package com.vaadin.external.atmosphere.build.xmlfilefilter;
+
 import java.io.File;
 
 import org.w3c.dom.Document;
@@ -31,22 +32,14 @@ public class ProjectGroupIdFilter extends PomXmlFilter {
 		}
 
 		String groupId = e.getTextContent();
-		if ("org.atmosphere".equals(groupId)) {
-			e.setTextContent(GROUP_ID_PREFIX);
-		} else if ("org.atmosphere.client".equals(groupId)) {
-			e.setTextContent(GROUP_ID_PREFIX + ".client");
-		} else if ("org.atmosphere.org.timepedia.exporter".equals(groupId)) {
-			e.setTextContent(GROUP_ID_PREFIX + ".org.timepedia.exporter");
-		} else if (GROUP_ID_PREFIX.equals(groupId)
-				|| (GROUP_ID_PREFIX + ".client").equals(groupId)) {
+		if (groupId.startsWith("org.atmosphere")) {
+			e.setTextContent(groupId.replace("org.atmosphere", GROUP_ID_PREFIX));
 		} else if ("org.sonatype.oss".equals(groupId)) {
 		} else if ("gwtexporter".equals(groupId)) {
 			e.setTextContent(GROUP_ID_PREFIX + ".gwtexporter");
-
 		} else {
 			throw new IllegalStateException("Unexpected groupId: " + groupId);
 		}
-
 	}
 
 }
