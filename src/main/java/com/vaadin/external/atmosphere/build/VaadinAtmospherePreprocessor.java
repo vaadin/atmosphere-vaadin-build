@@ -17,6 +17,7 @@ import com.vaadin.external.atmosphere.build.filefilter.SLF4JPackageReferenceUpda
 import com.vaadin.external.atmosphere.build.xmlfilefilter.AtmosphereDependencyUpdater;
 import com.vaadin.external.atmosphere.build.xmlfilefilter.DistributionManagementFilter;
 import com.vaadin.external.atmosphere.build.xmlfilefilter.GPGReleaseKeyReader;
+import com.vaadin.external.atmosphere.build.xmlfilefilter.OrgAtmosphereLogger;
 import com.vaadin.external.atmosphere.build.xmlfilefilter.ProjectGroupIdFilter;
 import com.vaadin.external.atmosphere.build.xmlfilefilter.SLF4JDependencyUpdater;
 import com.vaadin.external.atmosphere.build.xmlfilefilter.SLF4JRemovalValidator;
@@ -41,6 +42,7 @@ public class VaadinAtmospherePreprocessor {
 		xmlFilters.add(new GPGReleaseKeyReader(projectDir));
 
 		validationFilters.add(new SLF4JRemovalValidator(projectDir));
+		validationFilters.add(new OrgAtmosphereLogger(projectDir));
 
 		fileFilters.add(new SLF4JPackageReferenceUpdater(projectDir));
 		fileFilters.add(new JavascriptVersionUpdater(projectDir));
