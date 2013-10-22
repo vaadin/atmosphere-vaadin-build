@@ -22,10 +22,11 @@ public class AtmosphereDependencyUpdater extends PomXmlFilter {
 	@Override
 	public void process(File f, Document doc) throws Exception {
 		NodeList nodes = findNodes(doc,
-				"/project/dependencies/dependency/groupId[text()='org.atmosphere']");
+				"//groupId[starts-with(text(),'org.atmosphere')]");
 		for (int i = 0; i < nodes.getLength(); i++) {
 			Element groupId = (Element) nodes.item(i);
-			groupId.setTextContent(GROUP_ID_PREFIX);
+			groupId.setTextContent(groupId.getTextContent().replace(
+					"org.atmosphere", GROUP_ID_PREFIX));
 		}
 
 		updateFile(f, doc);
