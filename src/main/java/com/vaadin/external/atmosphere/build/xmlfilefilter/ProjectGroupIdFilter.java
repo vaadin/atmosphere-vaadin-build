@@ -32,9 +32,7 @@ public class ProjectGroupIdFilter extends PomXmlFilter {
 		}
 
 		String groupId = e.getTextContent();
-		if (groupId.startsWith("org.atmosphere.jboss.as")) {
-			// Rebased org.jboss.as; no need to replace
-		} else if (groupId.startsWith("org.atmosphere")) {
+		if (groupId.startsWith("org.atmosphere")) {
 			e.setTextContent(groupId.replace("org.atmosphere", GROUP_ID_PREFIX));
 		} else if ("org.sonatype.oss".equals(groupId)) {
 		} else if ("gwtexporter".equals(groupId)) {

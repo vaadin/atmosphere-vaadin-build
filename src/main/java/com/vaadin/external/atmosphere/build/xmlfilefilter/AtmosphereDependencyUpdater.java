@@ -22,7 +22,7 @@ public class AtmosphereDependencyUpdater extends PomXmlFilter {
 	@Override
 	public void process(File f, Document doc) throws Exception {
 		NodeList nodes = findNodes(doc,
-				"//groupId[starts-with(text(),'org.atmosphere')]");
+				"//groupId[starts-with(text(),'org.atmosphere') and not(starts-with(text(), 'org.atmosphere.jboss.as'))]");
 		for (int i = 0; i < nodes.getLength(); i++) {
 			Element groupId = (Element) nodes.item(i);
 			Element version = (Element)findNode(groupId,"../version");
@@ -36,7 +36,7 @@ public class AtmosphereDependencyUpdater extends PomXmlFilter {
 				} else {
 				}
 			}
-				
+
 			groupId.setTextContent(groupId.getTextContent().replace(
 					"org.atmosphere", GROUP_ID_PREFIX));
 		}
