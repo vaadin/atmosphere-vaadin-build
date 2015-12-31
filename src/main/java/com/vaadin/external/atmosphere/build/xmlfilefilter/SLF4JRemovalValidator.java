@@ -32,6 +32,9 @@ public class SLF4JRemovalValidator extends PomXmlFilter {
                 } else if (line
                     .contains("<slf4j-version>1.6.1</slf4j-version>")) {
                     // this is ok
+                } else if (line
+                    .contains("<slf4j-version>1.7.7</slf4j-version>")) {
+                    // this is ok
                 } else {
                     throw new IllegalStateException("File " + f.getPath()
                         + " contains slf4j: " + line);
