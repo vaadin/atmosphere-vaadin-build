@@ -25,9 +25,13 @@ public class JavascriptVersionUpdater extends AbstractFileFilter {
         String from2 = "version: \".*-jquery\"";
         String to2 = "version: \"" + Version.getVersion() + "-jquery\"";
 
+        String from3 = "version: \".*-javascript\"";
+        String to3 = "version: \"" + Version.getVersion() + "-javascript\"";
+
         String contents = readFile(f);
         contents = contents.replaceAll(from, to);
         contents = contents.replaceAll(from2, to2);
+        contents = contents.replaceAll(from3, to3);
         writeFile(f, contents);
     }
 
