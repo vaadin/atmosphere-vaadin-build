@@ -2,14 +2,11 @@ package com.vaadin.external.atmosphere.build;
 
 import com.vaadin.external.atmosphere.build.filefilter.FileFilter;
 import com.vaadin.external.atmosphere.build.filefilter.JavascriptVersionUpdater;
-import com.vaadin.external.atmosphere.build.filefilter.SLF4JPackageReferenceUpdater;
 import com.vaadin.external.atmosphere.build.xmlfilefilter.AtmosphereDependencyUpdater;
 import com.vaadin.external.atmosphere.build.xmlfilefilter.DistributionManagementFilter;
 import com.vaadin.external.atmosphere.build.xmlfilefilter.GPGReleaseKeyReader;
 import com.vaadin.external.atmosphere.build.xmlfilefilter.OrgAtmosphereLogger;
 import com.vaadin.external.atmosphere.build.xmlfilefilter.ProjectGroupIdFilter;
-import com.vaadin.external.atmosphere.build.xmlfilefilter.SLF4JDependencyUpdater;
-import com.vaadin.external.atmosphere.build.xmlfilefilter.SLF4JRemovalValidator;
 import com.vaadin.external.atmosphere.build.xmlfilefilter.XMLFileFilter;
 import org.w3c.dom.Document;
 
@@ -36,13 +33,10 @@ public class VaadinAtmospherePreprocessor {
         xmlFilters.add(new ProjectGroupIdFilter(projectDir));
         xmlFilters.add(new AtmosphereDependencyUpdater(projectDir));
         xmlFilters.add(new DistributionManagementFilter(projectDir));
-        xmlFilters.add(new SLF4JDependencyUpdater(projectDir));
         xmlFilters.add(new GPGReleaseKeyReader(projectDir));
 
-        validationFilters.add(new SLF4JRemovalValidator(projectDir));
         validationFilters.add(new OrgAtmosphereLogger(projectDir));
 
-        fileFilters.add(new SLF4JPackageReferenceUpdater(projectDir));
         fileFilters.add(new JavascriptVersionUpdater(projectDir));
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 
