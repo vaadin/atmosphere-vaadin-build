@@ -21,7 +21,7 @@ public class DistributionManagementFilter extends PomXmlFilter {
 
     private static final String VAADIN_STAGING_ID = "vaadin-staging";
     private static final String VAADIN_STAGING_NAME = "Vaadin staging";
-    private static final String VAADIN_STAGING_URL = "https://oss.sonatype.org/service/local/staging/deploy/maven2/";
+    private static final String VAADIN_STAGING_URL = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/";
 
     @Override
     public boolean needsProcessing(File f) {
